@@ -14,11 +14,13 @@ Notes:
 3) Important Note: Service Type could be changed from "NodePort" to "LoadBalancer" for supported cloud for K8S to make use of Native cloud load balancer!
 
 4) $ minikube --help
+   https://minikube.sigs.k8s.io/docs/start/ : minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
    minikube provisions and manages local Kubernetes clusters optimized for development workflows.
    Ex:
-    - $ minikube start                              -> Start minikube Docker service
-    - $ minikube stop                               -> Stops minikube Docker service
-    - $ minikube dashboard                          -> [IMPORTANT] Access the Kubernetes dashboard running within the minikube cluster
+    - $ minikube start                                      -> Start minikube Docker service
+    - $ minikube stop                                       -> Stops minikube Docker service
+    - $ minikube dashboard                                  -> [IMPORTANT] Access the Kubernetes dashboard running within the minikube cluster
+    - $ minikube kubectl -- get po -A or kubectl get po -A  -> https://minikube.sigs.k8s.io/docs/start/
 
 5) $ kubectl --help
    kubectl controls the Kubernetes cluster manager.

@@ -7,10 +7,13 @@ A simple kubernetes configuration file and steps to deploy replicaset of "Hello 
 ```
 1) Docker Desktop Installed 
 
-2) minikube - provisions and manages local Kubernetes clusters optimized for development workflows.
-    - minikube docker app installed - Docker image "gcr.io/k8s-minikube/kicbase"
-    - https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
-    - "Minikube is a lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node."
+2) minikube 
+   - https://minikube.sigs.k8s.io/docs/start/ - minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
+   - minikube provisions and manages local Kubernetes clusters optimized for development workflows.
+   - 
+   - minikube docker installed - Docker image "gcr.io/k8s-minikube/kicbase"
+   - https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
+   - "Minikube is a lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node." or deployed as docker container.
 
 3) cygwin installed to emulate unix commands
 ```
