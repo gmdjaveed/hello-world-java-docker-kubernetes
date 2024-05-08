@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: hello-world-service
+  labels:
+    name: hello-world-service
+    app: demo-hello-world-app
+spec:
+  # IMPORTANT:
+  # type: NodePort -> for running locally
+  # type: LoadBalancer -> for running in supported clouds such aws, gcp, azure etc
+  type: LoadBalancer
+  ports:
+    - port: 80 # This service port
+      targetPort: 8080  # hello-world-app-pod is running here
+      nodePort: 30010 # Host port
+  selector:
+    name: hello-world-app-pod
+    app: demo-hello-world-app

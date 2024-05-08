@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: hello-world-app-pod
+  labels:
+    name: hello-world-app-pod
+    app: demo-hello-world-app
+spec:
+  containers:
+    - name: hello-world-app
+      image: gmdjaveed/jg-hello-world-java-docker:2.0
+      ports:
+        - containerPort: 8080
+ 
+ 
