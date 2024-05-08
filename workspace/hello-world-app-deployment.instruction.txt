@@ -202,3 +202,70 @@ GOAL:2
 
         NAME                                                DESIRED   CURRENT   READY   AGE
         replicaset.apps/hello-world-app-deploy-67d4c558fb   2         2         2       15m
+
+Checking POD/Containers logs:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    login into minikube (default will be docker user) and become root with pass root to access the log as follows:
+
+    $ minikube ssh -n minikube
+
+    cadaca-869b-4399-a96f-3588bd42f944/hello-world-app$ whoami
+    docker
+
+    docker@minikube:/var/log/pods/default_hello-world-app-deploy-67d4c558fb-c8lk5_54cadaca-869b-4399-a96f-3588bd42f944/hello-world-app$ pwd
+    /var/log/pods/default_hello-world-app-deploy-67d4c558fb-c8lk5_54cadaca-869b-4399-a96f-3588bd42f944/hello-world-app
+
+    docker@minikube:/var/log/pods/default_hello-world-app-deploy-67d4c558fb-c8lk5_54cadaca-869b-4399-a96f-3588bd42f944/hello-world-app$ su root
+    /var/log/pods/default_hello-world-app-deploy-67d4c558fb-c8lk5_54cadaca-869b-4399-a96f-3588bd42f944/hello-world-app
+    root@minikube:/var/log/pods/default_hello-world-app-deploy-67d4c558fb-c8lk5_54ca
+    daca-869b-4399-a96f-3588bd42f944/hello-world-app# whoami
+    root
+    ..$ ls -lrta
+    :::
+    total 16
+    drwxr-xr-x 3 root root 4096 May  7 23:25 ..
+    lrwxrwxrwx 1 root root  165 May  7 23:25 0.log -> /var/lib/docker/containers/45ebce7a744a855e4bef1503fd26c82759fd3da2e4e02e6f54f4389eda0e11ef/45ebce7a744a855e4bef1503fd26c82759fd3da2e4e02e6f54f4389eda0e11ef-json.log
+    lrwxrwxrwx 1 root root  165 May  8 13:23 1.log -> /var/lib/docker/containers/e745e774710fc8c7b46349a44725ed92bf1f3a7db919665edbb56247d6acd73c/e745e774710fc8c7b46349a44725ed92bf1f3a7db919665edbb56247d6acd73c-json.log
+    drwxr-xr-x 2 root root 4096 May  8 13:23 .
+    root@minikube:/var/log/pods/default_hello-world-app-deploy-67d4c558fb-c8lk5_54cadaca-869b-4399-a96f-3588bd42f944/hello-world-app# tail -f 1.log
+    :::
+    root@minikube:/var/log/containers# ls
+    coredns-565d847f94-c2jcx_kube-system_coredns-721114e84fc4baf81f084852944bb5320da7c9a41cb9f615c9cde2f427287b82.log
+    coredns-565d847f94-c2jcx_kube-system_coredns-7b0b78281ba49cceaad85ea5da209c6b092de9523a887f8554d74c21095907bc.log
+    dashboard-metrics-scraper-b74747df5-wwhbs_kubernetes-dashboard_dashboard-metrics-scraper-711e271350fbb88d0b884db253d3875c76937ef1ba31d05ae8673a2d9191c4ea.log
+    dashboard-metrics-scraper-b74747df5-wwhbs_kubernetes-dashboard_dashboard-metrics-scraper-e58ae8bd41daf4430aeb6f8e26ca92ba3143e7cc043b61800ae14d0255a05b01.log
+    etcd-minikube_kube-system_etcd-a60f29a37d207c8d136d28c18ae229508d7d0c520fe47b931039bbfd91a80362.log
+    etcd-minikube_kube-system_etcd-e9ac43a35a3c16d60fca5cb45b08d1035cb92e054515449cde6c1248690c5a87.log
+    hello-world-app-deploy-67d4c558fb-c8lk5_default_hello-world-app-45ebce7a744a855e4bef1503fd26c82759fd3da2e4e02e6f54f4389eda0e11ef.log
+    hello-world-app-deploy-67d4c558fb-c8lk5_default_hello-world-app-e745e774710fc8c7b46349a44725ed92bf1f3a7db919665edbb56247d6acd73c.log
+    hello-world-app-deploy-67d4c558fb-f7bb4_default_hello-world-app-100f9dea8347a5182daa40ce98a19341ffa106a281f5230c578003a60e00d70f.log
+    hello-world-app-deploy-67d4c558fb-f7bb4_default_hello-world-app-1c625a6e890c7123ead0f2fc7b21f779361e71b134229e2d141721fb423c3a20.log
+    kube-apiserver-minikube_kube-system_kube-apiserver-eaa01b7ffe5229e0bc138ddbbc11aacf207dce2df9c58fb9b13292407f8bff7b.log
+    kube-apiserver-minikube_kube-system_kube-apiserver-fe0c795af08f67f14d256fb996c0c29abdbaa69183e823fd2adcc55ffeff1a5b.log
+    kube-controller-manager-minikube_kube-system_kube-controller-manager-18e0a0ca33a2f4f68fb30918cd48ec8c9cedb83ac5888ddf6398e00499684aff.log
+    kube-controller-manager-minikube_kube-system_kube-controller-manager-31925e9ea7ab0657853f1096f3e59f7697817fecd633e7bdcda619df8863f803.log
+    kube-proxy-c6zlt_kube-system_kube-proxy-2a6db3cae9eeeb08b7d9fc45943e8f1f1cbb26045eff746129acfe2584b4df46.log
+    kube-proxy-c6zlt_kube-system_kube-proxy-55d3304f37ee4dfe3c6060369da5f6600d967c1f65b2c1ed313045a751186080.log
+    kube-scheduler-minikube_kube-system_kube-scheduler-479098f6f318c3b205d9a71c17621347e38472829b9014668f45391acb360c52.log
+    kube-scheduler-minikube_kube-system_kube-scheduler-a9947713d8e41c6c7cde3c1db438c2e211fe05513ee9ee882fde5fae7dbb4685.log
+    kubernetes-dashboard-57bbdc5f89-nxstb_kubernetes-dashboard_kubernetes-dashboard-350edf3e85f1cb0d7fadc390cd6612e85f1a68ad021d2209b1bee8d0093e0549.log
+    kubernetes-dashboard-57bbdc5f89-nxstb_kubernetes-dashboard_kubernetes-dashboard-af24ec2d167f9b6a8d0ecd170ea1b9378774f3ed044d6303d84d1339ddb09bd3.log
+    storage-provisioner_kube-system_storage-provisioner-53810ec60efb0d4dded3f71a2a5243e69bb386384b1c98487167248138741929.log
+    storage-provisioner_kube-system_storage-provisioner-9be5d623ed49e221070ac47b0873ec344b962fcd214cd64f7dc5e4f8d9ebef44.log
+
+
+    :::: (EXIT ROOT)
+    docker@minikube:/var/log$ ls -lrta
+    total 328
+    drwx------  2 root root   4096 Oct  3  2022 private
+    -rw-rw----  1 root utmp      0 Oct  3  2022 btmp
+    drwxr-xr-x 14 root root   4096 Apr 29 02:55 ..
+    drwxr-xr-x  5 root root   4096 Apr 29 02:55 .
+    -rw-r--r--  1 root root   1663 May  8 13:23 alternatives.log
+    drwxr-xr-x  2 root root  12288 May  8 13:24 containers
+    drwxr-xr-x 13 root root   4096 May  8 13:24 pods
+    -rw-rw-r--  1 root utmp   6528 May  8 14:44 wtmp
+    -rw-rw-r--  1 root utmp 292292 May  8 14:44 lastlog
+
+
+
